@@ -19,5 +19,9 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-How to build
-vue create vue-crash-course
+-------Create initial Vue Application----
+    1.vue create vue-crash-course
+-------End---------------------------
+------Create Routing in Vue Application----
+npm i vue-router@next
+

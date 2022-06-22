@@ -5,6 +5,8 @@
       <AddTask @add-task="addTask"></AddTask>
     </div>
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"></Tasks>
+    <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -13,13 +15,15 @@ import { CLOSING } from 'ws';
 import Header from './Header.vue';
 import Tasks from './Tasks.vue';
 import AddTask from './AddTask.vue';
+import Footer from './Footer.vue'
 
 export default {
   name: 'App',
   components:{
     Header,
     Tasks,
-    AddTask
+    AddTask,
+    Footer
   },
   data(){
     return {
