@@ -1,17 +1,29 @@
 <template>
-  <div >
-    <router-view></router-view>
+  <div class="container">
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :btnText="showAddTask?'Close':'Add Task'" :btnColor="showAddTask?'red':'green'"></Header>
+    <router-view :showAddTask="showAddTask"></router-view>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Footer from './Footer.vue'
-
+import Header from './Header.vue';
 export default {
   name: 'App',
   components:{
-    Footer
+    Footer,
+    Header 
+  },
+  methods:{
+    toggleAddTask(){
+      this.showAddTask = !this.showAddTask;
+    },
+  },
+  data(){
+    return {
+      showAddTask:false
+    }
   },
 }
 </script>

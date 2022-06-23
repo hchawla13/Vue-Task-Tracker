@@ -1,9 +1,8 @@
 <template>
-<header>
-    <h1>{{title}}</h1>
-    <Button @btn-click="$emit('toggle-add-task')" :text="btnText" :color="btnColor"></Button>
-</header>
-    
+    <header>
+        <h1>{{title}}</h1>
+        <Button v-show="homePage" @btn-click="$emit('toggle-add-task')" :text="btnText" :color="btnColor"></Button>
+    </header>
 </template>
 <script>
     import Button from './Button.vue'
@@ -23,7 +22,15 @@
             type: String
         }
     },
-    components: { Button }
+    components: { Button },
+    computed:{
+        homePage(){
+            if(this.$route.path === '/') {
+                return true;
+            }
+            return false;
+        }
+    }
 }
 </script>
 <style>

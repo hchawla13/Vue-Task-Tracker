@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :btnText="showAddTask?'Close':'Add Task'" :btnColor="showAddTask?'red':'green'"></Header>
         <div v-if="showAddTask">
             <AddTask @add-task="addTask"></AddTask>
         </div>
@@ -8,20 +7,24 @@
     </div>
 </template>
 <script>
-    import Header from '../components/Header.vue';
+    
     import Tasks from '../components/Tasks.vue';
     import AddTask from '../components/AddTask.vue';
     export default {
         name:'Home',
         components: {
-            Header,
             Tasks,
             AddTask,
+        },
+        props:{
+            showAddTask :{
+                type: Boolean,
+                default: false
+            }
         },
         data(){
             return {
                 tasks:[],
-                showAddTask:false
             }
         },
         async created(){
@@ -46,8 +49,6 @@
             console.log("reminder for ",id)
             const taskToToggle = await this.fetchTaskById(id);
             let newTaskList = {...taskToToggle,reminder:!taskToToggle.reminder}
-            console.log("newTaskList",newTaskList)
-            //writing the updated code to json. 
             const res = await fetch(`api/tasks/${id}`,{
                 method:'PUT',
                 headers:{
@@ -74,9 +75,7 @@
             const data = await res.json();
             this.tasks.push(data);
             },
-            toggleAddTask(){
-            this.showAddTask = !this.showAddTask;
-            },
+            
             async fetchTasks(){
             return await fetch('api/tasks').then(res=>res.json());
             },

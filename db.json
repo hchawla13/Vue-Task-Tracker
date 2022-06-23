@@ -1,21 +1,9 @@
 {
   "tasks": [
     {
-      "id": 7036,
-      "text": "Doctors appointment",
-      "day": "Somewhere in alaska",
-      "reminder": true
-    },
-    {
-      "id": 8872,
-      "text": "Pickup from school",
-      "day": "today 11am",
-      "reminder": true
-    },
-    {
-      "id": 6946,
-      "text": "Hello world",
-      "day": "everyday",
+      "id": 6235,
+      "text": "Testing",
+      "day": "today",
       "reminder": false
     }
   ]
